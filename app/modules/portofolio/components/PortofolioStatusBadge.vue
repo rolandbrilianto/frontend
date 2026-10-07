@@ -18,8 +18,8 @@ const statusConfig = computed(() => {
       }
     case 'Active':
       return {
-        bg: 'bg-green-50 text-green-700 border-green-200',
-        dot: 'bg-green-500',
+        bg: 'bg-blue-50 text-blue-700 border-blue-200',
+        dot: 'bg-blue-500',
         icon: 'i-lucide-circle'
       }
     case 'On Going':
@@ -30,8 +30,8 @@ const statusConfig = computed(() => {
       }
     case 'Planned':
       return {
-        bg: 'bg-sky-50 text-sky-700 border-sky-200',
-        dot: 'bg-sky-500',
+        bg: 'bg-slate-100 text-slate-600 border-slate-200',
+        dot: 'bg-slate-400',
         icon: 'i-lucide-circle'
       }
     case 'Cancelled':
