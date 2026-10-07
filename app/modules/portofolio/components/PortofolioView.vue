@@ -176,18 +176,18 @@ const dummyProjects = ref<ProjectItem[]>([
 // Komputasi filter pencarian interaktif
 const filteredProjects = computed(() => {
   return dummyProjects.value.filter((project) => {
-    const matchSearch =
-      !activeFilters.value.search ||
-      project.title.toLowerCase().includes(activeFilters.value.search.toLowerCase()) ||
-      project.client.toLowerCase().includes(activeFilters.value.search.toLowerCase()) ||
-      project.description.toLowerCase().includes(activeFilters.value.search.toLowerCase())
+    const matchSearch
+      = !activeFilters.value.search
+        || project.title.toLowerCase().includes(activeFilters.value.search.toLowerCase())
+        || project.client.toLowerCase().includes(activeFilters.value.search.toLowerCase())
+        || project.description.toLowerCase().includes(activeFilters.value.search.toLowerCase())
 
-    const matchIndustry =
-      !activeFilters.value.industry || project.industry === activeFilters.value.industry
+    const matchIndustry
+      = !activeFilters.value.industry || project.industry === activeFilters.value.industry
 
-    const matchTech =
-      !activeFilters.value.technology ||
-      project.technologies.includes(activeFilters.value.technology)
+    const matchTech
+      = !activeFilters.value.technology
+        || project.technologies.includes(activeFilters.value.technology)
 
     const matchStatus = !activeFilters.value.status || project.status === activeFilters.value.status
 
@@ -226,7 +226,10 @@ const handleViewDetail = (project: ProjectItem) => {
     <PortofolioHeader @add-project="handleAddProject" />
 
     <!-- 2. Search & Filters Bar -->
-    <PortofolioFilter @filter-change="handleFilterChange" @reset="handleResetFilter" />
+    <PortofolioFilter
+      @filter-change="handleFilterChange"
+      @reset="handleResetFilter"
+    />
 
     <!-- 3. Toolbar (Counter, Grid/Table Toggle, Sort By) -->
     <PortofolioToolbar
@@ -245,7 +248,11 @@ const handleViewDetail = (project: ProjectItem) => {
       />
 
       <!-- Table View -->
-      <PortofolioTable v-else :projects="filteredProjects" @view-detail="handleViewDetail" />
+      <PortofolioTable
+        v-else
+        :projects="filteredProjects"
+        @view-detail="handleViewDetail"
+      />
     </div>
 
     <!-- 5. Bottom Pagination -->

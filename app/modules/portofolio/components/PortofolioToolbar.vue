@@ -7,7 +7,7 @@ interface Props {
   sortBy: string
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'update:currentView', mode: ViewMode): void
@@ -25,7 +25,9 @@ const sortOptions = [
 <template>
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
     <!-- Total Counter -->
-    <div class="text-sm font-bold text-slate-900">{{ totalCount }} Projects</div>
+    <div class="text-sm font-bold text-slate-900">
+      {{ totalCount }} Projects
+    </div>
 
     <!-- Controls: Grid/Table Toggle & Sort By -->
     <div class="flex items-center gap-3">
@@ -41,7 +43,10 @@ const sortOptions = [
           ]"
           @click="emit('update:currentView', 'grid')"
         >
-          <UIcon name="i-lucide-layout-grid" class="h-3.5 w-3.5" />
+          <UIcon
+            name="i-lucide-layout-grid"
+            class="h-3.5 w-3.5"
+          />
           <span>Grid</span>
         </button>
 
@@ -55,7 +60,10 @@ const sortOptions = [
           ]"
           @click="emit('update:currentView', 'table')"
         >
-          <UIcon name="i-lucide-table-2" class="h-3.5 w-3.5" />
+          <UIcon
+            name="i-lucide-table-2"
+            class="h-3.5 w-3.5"
+          />
           <span>Table</span>
         </button>
       </div>
@@ -68,7 +76,11 @@ const sortOptions = [
           class="h-8.5 rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition-colors focus:border-blue-500 focus:outline-none cursor-pointer"
           @change="emit('update:sortBy', ($event.target as HTMLSelectElement).value)"
         >
-          <option v-for="opt in sortOptions" :key="opt.value" :value="opt.value">
+          <option
+            v-for="opt in sortOptions"
+            :key="opt.value"
+            :value="opt.value"
+          >
             {{ opt.label }}
           </option>
         </select>
