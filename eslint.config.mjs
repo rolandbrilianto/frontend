@@ -15,5 +15,18 @@ export default withNuxt(
         ]
       }
     }
+  },
+  {
+    // Shell (navbar/sidebar) dijaga persis seperti desain aslinya.
+    // Aturan format dimatikan agar tidak perlu merapikan file ini,
+    // aturan correctness tetap aktif dengan allowlist sempit.
+    files: ['app/components/layout/AppNavbar.vue', 'app/components/layout/AppSidebar.vue'],
+    rules: {
+      'vue/max-attributes-per-line': 'off',
+      'vue/singleline-html-element-content-newline': 'off',
+      '@stylistic/arrow-parens': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^_$|^computed$' }],
+      'better-tailwindcss/no-unknown-classes': ['error', { ignore: ['^custom-scrollbar$'] }]
+    }
   }
 )

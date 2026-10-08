@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 
 interface Props {
-  currentPage: number
-  totalItems: number
-  pageSize: number
+  currentPage?: number
+  totalItems?: number
+  pageSize?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -56,7 +56,10 @@ const goToPage = (page: number) => {
         aria-label="Previous Page"
         @click="goToPage(currentPage - 1)"
       >
-        <UIcon name="i-lucide-chevron-left" class="h-4 w-4" />
+        <UIcon
+          name="i-lucide-chevron-left"
+          class="h-4 w-4"
+        />
       </button>
 
       <!-- Tombol Halaman Dummy/Reaktif (1, 2, 3, 4, 5, ..., 11) -->
@@ -100,7 +103,10 @@ const goToPage = (page: number) => {
         aria-label="Next Page"
         @click="goToPage(currentPage + 1)"
       >
-        <UIcon name="i-lucide-chevron-right" class="h-4 w-4" />
+        <UIcon
+          name="i-lucide-chevron-right"
+          class="h-4 w-4"
+        />
       </button>
     </div>
   </div>

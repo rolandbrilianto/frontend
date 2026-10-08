@@ -19,6 +19,20 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
+  echarts: {
+    renderer: 'canvas',
+    charts: ['LineChart', 'BarChart', 'PieChart', 'FunnelChart'],
+    components: [
+      'GridComponent',
+      'TooltipComponent',
+      'LegendComponent',
+      'TitleComponent',
+      'DatasetComponent',
+      'MarkLineComponent'
+    ],
+    features: ['LabelLayout']
+  },
+
   eslint: {
     config: {
       stylistic: {
