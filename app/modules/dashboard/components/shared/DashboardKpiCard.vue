@@ -30,11 +30,11 @@ const trendIcons: Record<'up' | 'down' | 'neutral', string> = {
     </div>
 
     <div class="min-w-0 flex-1">
-      <p class="truncate text-[11px] leading-4 font-semibold tracking-wider text-slate-500 uppercase">
+      <p class="truncate text-[11px] leading-4 font-semibold text-slate-500">
         {{ label }}
       </p>
 
-      <p class="mt-0.5 truncate text-2xl leading-8 font-bold tracking-tight text-slate-900 tabular-nums">
+      <p class="mt-0.5 truncate text-xl leading-7 font-bold text-slate-900">
         {{ value }}
       </p>
 

@@ -19,12 +19,12 @@ withDefaults(defineProps<Props>(), {
       class="flex h-9 shrink-0 items-center justify-between gap-3 border-b border-slate-100 px-4"
     >
       <div class="flex min-w-0 items-baseline gap-2">
-        <h2 class="shrink-0 truncate text-sm leading-5 font-semibold tracking-tight text-slate-900">
+        <h2 class="shrink-0 truncate text-xs leading-5 font-bold tracking-tight text-slate-900">
           {{ title }}
         </h2>
         <p
           v-if="subtitle"
-          class="min-w-0 truncate text-xs leading-4 text-slate-400"
+          class="min-w-0 truncate text-[11px] leading-4 text-slate-400"
         >
           {{ subtitle }}
         </p>
