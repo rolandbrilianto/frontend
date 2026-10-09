@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectItem } from '../types/types'
+import type { ProjectItem } from '../../types/types.ts'
 import PortofolioStatusBadge from './PortofolioStatusBadge.vue'
 
 interface Props {
@@ -24,7 +24,7 @@ const emit = defineEmits<{
         :alt="project.title"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         loading="lazy"
-      >
+      />
       <!-- Floating Badge -->
       <div class="absolute top-3 left-3">
         <PortofolioStatusBadge :status="project.status" />

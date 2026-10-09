@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { ProjectItem, ViewMode, PortfolioFilterState } from '../types/types'
+import type { ProjectItem, ViewMode, PortfolioFilterState } from '../../types/types.ts'
 
 import PortofolioHeader from './PortofolioHeader.vue'
 import PortofolioFilter from './PortofolioFilter.vue'
@@ -176,18 +176,18 @@ const dummyProjects = ref<ProjectItem[]>([
 // Komputasi filter pencarian interaktif
 const filteredProjects = computed(() => {
   return dummyProjects.value.filter((project) => {
-    const matchSearch
-      = !activeFilters.value.search
-        || project.title.toLowerCase().includes(activeFilters.value.search.toLowerCase())
-        || project.client.toLowerCase().includes(activeFilters.value.search.toLowerCase())
-        || project.description.toLowerCase().includes(activeFilters.value.search.toLowerCase())
+    const matchSearch =
+      !activeFilters.value.search ||
+      project.title.toLowerCase().includes(activeFilters.value.search.toLowerCase()) ||
+      project.client.toLowerCase().includes(activeFilters.value.search.toLowerCase()) ||
+      project.description.toLowerCase().includes(activeFilters.value.search.toLowerCase())
 
-    const matchIndustry
-      = !activeFilters.value.industry || project.industry === activeFilters.value.industry
+    const matchIndustry =
+      !activeFilters.value.industry || project.industry === activeFilters.value.industry
 
-    const matchTech
-      = !activeFilters.value.technology
-        || project.technologies.includes(activeFilters.value.technology)
+    const matchTech =
+      !activeFilters.value.technology ||
+      project.technologies.includes(activeFilters.value.technology)
 
     const matchStatus = !activeFilters.value.status || project.status === activeFilters.value.status
 
@@ -214,9 +214,10 @@ const handleAddProject = () => {
   alert('Modal / Page Add Project akan dibuka!')
 }
 
+// Di dalam <script setup> PortofolioView.vue:
 const handleViewDetail = (project: ProjectItem) => {
-  // Navigasi ke detail atau buka modal detail
-  console.log('Viewing project:', project.title)
+  // Langsung arahkan ke URL /portofolio/1, /portofolio/2, dst
+  navigateTo(`/portofolio/${project.id}`)
 }
 </script>
 
@@ -226,10 +227,7 @@ const handleViewDetail = (project: ProjectItem) => {
     <PortofolioHeader @add-project="handleAddProject" />
 
     <!-- 2. Search & Filters Bar -->
-    <PortofolioFilter
-      @filter-change="handleFilterChange"
-      @reset="handleResetFilter"
-    />
+    <PortofolioFilter @filter-change="handleFilterChange" @reset="handleResetFilter" />
 
     <!-- 3. Toolbar (Counter, Grid/Table Toggle, Sort By) -->
     <PortofolioToolbar
@@ -248,11 +246,7 @@ const handleViewDetail = (project: ProjectItem) => {
       />
 
       <!-- Table View -->
-      <PortofolioTable
-        v-else
-        :projects="filteredProjects"
-        @view-detail="handleViewDetail"
-      />
+      <PortofolioTable v-else :projects="filteredProjects" @view-detail="handleViewDetail" />
     </div>
 
     <!-- 5. Bottom Pagination -->
