@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DashboardCard from '../shared/DashboardCard.vue'
-import PortofolioStatusBadge from '../../../portofolio/components/PortofolioStatusBadge.vue'
-
+// ✅ Benar (Sangat direkomendasikan):
+import PortofolioStatusBadge from '~/modules/portofolio/components/portofolio-list/PortofolioStatusBadge.vue'
 import type { FeaturedProject } from '../../types/types'
 
 defineProps<{
@@ -21,10 +21,7 @@ defineProps<{
         class="inline-flex items-center gap-1 text-xs leading-4 font-semibold text-blue-600 transition-colors hover:text-blue-700"
       >
         <span>View all</span>
-        <UIcon
-          name="i-lucide-arrow-right"
-          class="h-3.5 w-3.5"
-        />
+        <UIcon name="i-lucide-arrow-right" class="h-3.5 w-3.5" />
       </NuxtLink>
     </template>
 
@@ -39,7 +36,7 @@ defineProps<{
           :alt="project.title"
           class="h-12 w-12 shrink-0 rounded-md object-cover"
           loading="lazy"
-        >
+        />
 
         <div class="min-w-0 flex-1">
           <p
@@ -57,11 +54,10 @@ defineProps<{
           </p>
 
           <div class="mt-1 flex items-center justify-between gap-2">
-            <PortofolioStatusBadge
-              :status="project.status"
-              class="shrink-0"
-            />
-            <span class="shrink-0 text-[11px] leading-4 font-semibold tabular-nums text-emerald-600">
+            <PortofolioStatusBadge :status="project.status" class="shrink-0" />
+            <span
+              class="shrink-0 text-[11px] leading-4 font-semibold tabular-nums text-emerald-600"
+            >
               {{ project.roi }}
             </span>
           </div>

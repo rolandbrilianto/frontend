@@ -21,3 +21,44 @@ export interface PortfolioFilterState {
   year: string
   status: string
 }
+
+// --- Tambahan Khusus untuk Halaman Detail ---
+
+export interface ProjectDocument {
+  name: string
+  size: string
+  date: string
+}
+
+export interface RelatedPartner {
+  name: string
+  role: string
+  tag: string
+  icon?: string
+}
+
+export interface ProjectDetailItem extends ProjectItem {
+  period: string
+  projectValue: string
+  location: string
+  teamSize: string
+  serviceType: string
+  projectType: string
+  heroImages: string[]
+  overview: string
+  background: string
+  challenges: string[]
+  solutions: string[]
+  metrics: {
+    label: string
+    value: string
+    sublabel: string
+  }[]
+  mediaGallery: {
+    type: 'image' | 'video'
+    url: string
+    title: string
+  }[]
+  documents: ProjectDocument[]
+  partners: RelatedPartner[]
+}

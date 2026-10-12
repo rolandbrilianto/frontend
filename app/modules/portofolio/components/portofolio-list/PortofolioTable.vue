@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectItem } from '../types/types'
+import type { ProjectItem } from '../../types/types.ts'
 import PortofolioStatusBadge from './PortofolioStatusBadge.vue'
 
 interface Props {
@@ -22,48 +22,13 @@ const emit = defineEmits<{
           class="border-b border-slate-100 bg-slate-50/75 text-[11px] font-bold uppercase tracking-wider text-slate-500"
         >
           <tr>
-            <th
-              scope="col"
-              class="py-3.5 pr-4 pl-6"
-            >
-              Project
-            </th>
-            <th
-              scope="col"
-              class="px-4 py-3.5"
-            >
-              Industry
-            </th>
-            <th
-              scope="col"
-              class="px-4 py-3.5"
-            >
-              Technology
-            </th>
-            <th
-              scope="col"
-              class="px-4 py-3.5"
-            >
-              Status
-            </th>
-            <th
-              scope="col"
-              class="px-4 py-3.5"
-            >
-              Client
-            </th>
-            <th
-              scope="col"
-              class="px-4 py-3.5"
-            >
-              Updated
-            </th>
-            <th
-              scope="col"
-              class="py-3.5 pr-6 pl-4 text-right"
-            >
-              Action
-            </th>
+            <th scope="col" class="py-3.5 pr-4 pl-6">Project</th>
+            <th scope="col" class="px-4 py-3.5">Industry</th>
+            <th scope="col" class="px-4 py-3.5">Technology</th>
+            <th scope="col" class="px-4 py-3.5">Status</th>
+            <th scope="col" class="px-4 py-3.5">Client</th>
+            <th scope="col" class="px-4 py-3.5">Updated</th>
+            <th scope="col" class="py-3.5 pr-6 pl-4 text-right">Action</th>
           </tr>
         </thead>
 
@@ -82,7 +47,7 @@ const emit = defineEmits<{
                   :alt="item.title"
                   class="h-10 w-12 shrink-0 rounded-lg object-cover shadow-2xs"
                   loading="lazy"
-                >
+                />
                 <span
                   class="font-bold text-slate-900 line-clamp-1 hover:text-blue-600 cursor-pointer"
                   @click="emit('view-detail', item)"
@@ -137,10 +102,7 @@ const emit = defineEmits<{
                 aria-label="Actions"
                 @click="emit('view-detail', item)"
               >
-                <UIcon
-                  name="i-lucide-more-vertical"
-                  class="h-4 w-4"
-                />
+                <UIcon name="i-lucide-more-vertical" class="h-4 w-4" />
               </button>
             </td>
           </tr>

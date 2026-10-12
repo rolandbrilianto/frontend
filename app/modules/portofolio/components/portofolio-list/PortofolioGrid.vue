@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectItem } from '../types/types'
+import type { ProjectItem } from '../../types/types.ts'
 import PortfolioCard from './PortofolioCard.vue'
 
 interface Props {
