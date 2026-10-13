@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
   >
     <button
       type="button"
-      class="inline-flex h-8.5 w-full min-w-0 items-center justify-between gap-2 rounded-lg border bg-white px-3 text-xs font-medium transition-colors cursor-pointer"
+      class="inline-flex h-8.5 w-full min-w-0 items-center justify-between gap-1.5 rounded-lg border bg-white px-2 text-[12px] font-medium transition-colors cursor-pointer"
       :class="
         isActive
           ? 'border-blue-500 text-blue-700 ring-1 ring-blue-500/30'

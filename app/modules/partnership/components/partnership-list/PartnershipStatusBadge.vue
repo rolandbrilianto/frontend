@@ -71,7 +71,7 @@ const dotClass = computed(() => {
 
 <template>
   <span
-    class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
+    class="inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[10px] font-semibold"
     :class="badgeClass"
   >
     <span

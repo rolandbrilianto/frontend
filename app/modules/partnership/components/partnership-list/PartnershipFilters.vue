@@ -37,28 +37,28 @@ const activeFilterCount = computed(() => {
 </script>
 
 <template>
-  <section class="rounded-xl border border-slate-200/80 bg-white p-3 shadow-xs">
-    <div class="flex flex-col gap-2.5 lg:flex-row lg:items-center">
+  <section class="rounded-lg border border-slate-200/80 bg-white p-1.5 shadow-xs">
+    <div class="flex flex-col gap-1.5 lg:flex-row lg:items-center">
       <div class="relative flex-1">
-        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-400">
           <UIcon
             name="i-lucide-search"
-            class="h-4 w-4"
+            class="h-3.5 w-3.5"
           />
         </div>
         <input
           :value="modelValue.search"
           type="text"
           placeholder="Search partner name, ID, or keyword..."
-          class="h-8.5 w-full rounded-lg border border-slate-200 bg-white pr-4 pl-9 text-sm text-slate-800 placeholder-slate-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          class="h-8.5 w-full rounded-lg border border-slate-200 bg-white pr-3 pl-8 text-[12px] text-slate-800 placeholder-slate-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           @input="update({ search: ($event.target as HTMLInputElement).value })"
         >
       </div>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5">
         <button
           type="button"
-          class="inline-flex h-8.5 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+          class="inline-flex h-8.5 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 text-[11px] font-semibold text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
           :disabled="activeFilterCount === 0"
           @click="emit('reset')"
         >
@@ -71,7 +71,7 @@ const activeFilterCount = computed(() => {
 
         <button
           type="button"
-          class="inline-flex h-8.5 items-center gap-2 rounded-lg border px-3 text-xs font-semibold transition-colors cursor-pointer"
+          class="inline-flex h-8.5 items-center gap-1.5 rounded-lg border px-2.5 text-[11px] font-semibold transition-colors cursor-pointer"
           :class="
             advancedActiveCount > 0
               ? 'border-blue-500 bg-blue-50 text-blue-700'
@@ -94,84 +94,60 @@ const activeFilterCount = computed(() => {
       </div>
     </div>
 
-    <div class="mt-2.5 grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="flex min-w-0 flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Partnership Category
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.categories"
-          label="All Categories"
-          :options="partnershipCategories"
-          search-placeholder="Search category..."
-          @update:model-value="(value) => update({ categories: value })"
-        />
-      </div>
+    <div class="mt-1.5 grid grid-cols-1 gap-1.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.categories"
+        label="All Categories"
+        :options="partnershipCategories"
+        search-placeholder="Search category..."
+        @update:model-value="(value) => update({ categories: value })"
+      />
 
-      <div class="flex flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Partnership Status
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.statuses"
-          label="All Status"
-          :options="partnershipStatuses"
-          search-placeholder="Search status..."
-          @update:model-value="(value) => update({ statuses: value })"
-        />
-      </div>
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.statuses"
+        label="All Status"
+        :options="partnershipStatuses"
+        search-placeholder="Search status..."
+        @update:model-value="(value) => update({ statuses: value })"
+      />
 
-      <div class="flex flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Contract Status
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.contractStatuses"
-          label="All Contract Status"
-          :options="contractStatuses"
-          search-placeholder="Search contract status..."
-          @update:model-value="(value) => update({ contractStatuses: value })"
-        />
-      </div>
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.contractStatuses"
+        label="All Contract Status"
+        :options="contractStatuses"
+        search-placeholder="Search contract status..."
+        @update:model-value="(value) => update({ contractStatuses: value })"
+      />
 
-      <div class="flex flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Industry
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.industries"
-          label="All Industries"
-          :options="industries"
-          search-placeholder="Search industry..."
-          @update:model-value="(value) => update({ industries: value })"
-        />
-      </div>
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.industries"
+        label="All Industries"
+        :options="industries"
+        search-placeholder="Search industry..."
+        @update:model-value="(value) => update({ industries: value })"
+      />
 
-      <div class="flex flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Expertise
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.expertises"
-          label="All Expertise"
-          :options="expertises"
-          search-placeholder="Search expertise..."
-          @update:model-value="(value) => update({ expertises: value })"
-        />
-      </div>
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.expertises"
+        label="All Expertise"
+        :options="expertises"
+        search-placeholder="Search expertise..."
+        @update:model-value="(value) => update({ expertises: value })"
+      />
 
-      <div class="flex flex-col gap-1">
-        <label class="text-xs font-semibold text-slate-600">
-          Location
-        </label>
-        <PartnershipFilterSelect
-          :model-value="modelValue.locations"
-          label="All Locations"
-          :options="locations"
-          search-placeholder="Search location..."
-          @update:model-value="(value) => update({ locations: value })"
-        />
-      </div>
+      <PartnershipFilterSelect
+        class="min-w-0"
+        :model-value="modelValue.locations"
+        label="All Locations"
+        :options="locations"
+        search-placeholder="Search location..."
+        @update:model-value="(value) => update({ locations: value })"
+      />
     </div>
   </section>
 </template>

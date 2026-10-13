@@ -104,14 +104,14 @@ const rowMenuItems = (partner: Partner) => [
 </script>
 
 <template>
-  <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xs">
+  <div class="overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-xs">
     <div class="overflow-x-auto">
-      <table class="w-full min-w-[1280px] border-collapse text-left text-sm">
+      <table class="w-full min-w-[1000px] border-collapse text-left text-[11px]">
         <thead class="border-b border-slate-100 bg-slate-50/75">
-          <tr class="text-[11px] font-bold tracking-wider text-slate-500 uppercase">
+          <tr class="text-[11px] leading-[1.2] font-bold tracking-wide text-slate-500 uppercase">
             <th
               scope="col"
-              class="w-12 py-2 pr-2 pl-6"
+              class="w-8 py-0.5 pr-2 pl-3"
             >
               <input
                 ref="headerCheckbox"
@@ -124,67 +124,67 @@ const rowMenuItems = (partner: Partner) => [
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-16 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Partner ID
+              Partner<br>ID
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="px-1.5 py-0.5"
             >
-              Partner Name
+              Partner<br>Name
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-24 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Partnership Category
+              Partner<br>Categories
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-28 px-1.5 py-0.5 whitespace-nowrap"
             >
               Industry
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="px-1.5 py-0.5"
             >
               Expertise
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-20 px-1.5 py-0.5 whitespace-nowrap"
             >
               Location
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-24 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Partnership Status
+              Partner<br>Status
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-24 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Contract Status
+              Contract<br>Status
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-24 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Contract End
+              Contract<br>End
             </th>
             <th
               scope="col"
-              class="px-3 py-2 whitespace-nowrap"
+              class="w-24 px-1.5 py-0.5 whitespace-nowrap"
             >
-              Last Updated
+              Last<br>Update
             </th>
             <th
               scope="col"
-              class="w-14 py-2 pr-6 pl-3 text-right"
+              class="w-9 py-0.5 pr-3 pl-1.5 text-right"
             >
               Actions
             </th>
@@ -197,7 +197,7 @@ const rowMenuItems = (partner: Partner) => [
             :key="partner.id"
             class="transition-colors hover:bg-slate-50/70"
           >
-            <td class="py-2 pr-2 pl-6">
+            <td class="py-0.5 pr-2 pl-3">
               <input
                 type="checkbox"
                 class="h-4 w-4 cursor-pointer accent-blue-600"
@@ -207,80 +207,86 @@ const rowMenuItems = (partner: Partner) => [
               >
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap font-mono text-xs font-medium text-slate-500">
+            <td class="px-1.5 py-0.5 whitespace-nowrap font-mono text-[10px] font-medium text-slate-500">
               {{ partner.id }}
             </td>
 
-            <td class="px-3 py-2">
-              <div class="flex items-center gap-2.5">
+            <td class="px-1.5 py-0.5">
+              <div class="flex min-w-0 items-center gap-1.5">
                 <span
-                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold"
+                  class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[10px] font-bold"
                   :class="avatarClass(partner.name)"
                 >
                   {{ initials(partner.name) }}
                 </span>
-                <span class="font-medium text-slate-900">{{ partner.name }}</span>
+                <span
+                  class="min-w-0 max-w-[130px] truncate text-[11px] font-semibold text-slate-900"
+                  :title="partner.name"
+                >
+                  {{ partner.name }}
+                </span>
               </div>
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap">
+            <td class="px-1.5 py-0.5 whitespace-nowrap">
               <PartnershipStatusBadge
                 variant="category"
                 :status="partner.category"
               />
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap">
-              <span class="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+            <td class="px-1.5 py-0.5 whitespace-nowrap">
+              <span
+                class="inline-block max-w-[96px] truncate rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600"
+                :title="partner.industry"
+              >
                 {{ partner.industry }}
               </span>
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-slate-600">
-              {{ partner.expertise }}
+            <td class="px-1.5 py-0.5 whitespace-nowrap">
+              <span
+                class="inline-block max-w-[84px] truncate text-[10px] font-medium text-slate-600"
+                :title="partner.expertise"
+              >
+                {{ partner.expertise }}
+              </span>
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-slate-600">
+            <td class="px-1.5 py-0.5 whitespace-nowrap text-[10px] font-medium text-slate-600">
               {{ partner.location }}
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap">
+            <td class="px-1.5 py-0.5 whitespace-nowrap">
               <PartnershipStatusBadge
                 variant="partner"
                 :status="partner.status"
               />
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap">
+            <td class="px-1.5 py-0.5 whitespace-nowrap">
               <PartnershipStatusBadge
                 variant="contract"
                 :status="partner.contractStatus"
               />
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-slate-600">
+            <td class="px-1.5 py-0.5 whitespace-nowrap text-[10px] font-medium text-slate-600">
               {{ formatDate(partner.contractEndDate) }}
             </td>
 
-            <td class="px-3 py-2 whitespace-nowrap">
-              <div class="flex flex-col leading-tight">
-                <span class="text-xs font-medium text-slate-600">
-                  {{ formatDateTime(partner.lastUpdated).datePart }}
-                </span>
-                <span class="text-[11px] text-slate-400">
-                  {{ formatDateTime(partner.lastUpdated).timePart }}
-                </span>
-              </div>
+            <td class="px-1.5 py-0.5 whitespace-nowrap text-[10px] font-medium text-slate-500">
+              {{ formatDateTime(partner.lastUpdated).datePart }} · {{ formatDateTime(partner.lastUpdated).timePart }}
             </td>
 
-            <td class="py-2 pr-6 pl-3 text-right">
+            <td class="py-0.5 pr-3 pl-1.5 text-right">
               <UDropdownMenu
                 :items="rowMenuItems(partner)"
                 :content="{ align: 'end' }"
               >
                 <button
                   type="button"
-                  class="inline-flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 cursor-pointer"
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 cursor-pointer"
                   aria-label="Partner actions"
                 >
                   <UIcon
@@ -295,7 +301,7 @@ const rowMenuItems = (partner: Partner) => [
           <tr v-if="partners.length === 0">
             <td
               :colspan="12"
-              class="px-6 py-10 text-center"
+              class="px-6 py-8 text-center"
             >
               <div class="flex flex-col items-center gap-2">
                 <UIcon

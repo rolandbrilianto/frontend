@@ -47,51 +47,51 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
 </script>
 
 <template>
-  <div class="flex flex-col gap-2.5">
-    <nav class="flex items-center gap-1.5 text-xs font-medium text-slate-400">
+  <div class="flex flex-col gap-1.5">
+    <nav class="flex items-center gap-1 text-[11px] font-medium text-slate-400">
       <span>Partnership</span>
       <UIcon
         name="i-lucide-chevron-right"
-        class="h-3.5 w-3.5"
+        class="h-3 w-3"
       />
       <span class="font-semibold text-slate-700">All Partners</span>
     </nav>
 
-    <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+    <div class="flex flex-col gap-1.5 lg:flex-row lg:items-center lg:justify-between">
       <div>
-        <h1 class="text-xl font-bold tracking-tight text-slate-900">
+        <h1 class="text-base leading-5 font-bold tracking-tight text-slate-900">
           All Partners
         </h1>
-        <p class="mt-0.5 max-w-2xl text-sm text-slate-500">
+        <p class="max-w-2xl text-[11px] leading-4 text-slate-500">
           Manage partner information, view collaboration status, and track partnership performance.
         </p>
       </div>
 
-      <div class="flex shrink-0 items-center gap-2.5">
+      <div class="flex shrink-0 items-center gap-1.5">
         <div
           ref="exportContainer"
           class="relative"
         >
           <button
             type="button"
-            class="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 text-sm font-semibold text-slate-700 shadow-xs transition-colors hover:bg-slate-50 cursor-pointer"
+            class="inline-flex h-7.5 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 text-[11px] font-semibold text-slate-700 shadow-xs transition-colors hover:bg-slate-50 cursor-pointer"
             @click="isExportOpen = !isExportOpen"
           >
             <UIcon
               name="i-lucide-download"
-              class="h-4 w-4 text-slate-500"
+              class="h-3.5 w-3.5 text-slate-500"
             />
             <span>Export</span>
             <UIcon
               name="i-lucide-chevron-down"
-              class="h-3.5 w-3.5 text-slate-400 transition-transform duration-200"
+              class="h-3 w-3 text-slate-400 transition-transform duration-200"
               :class="{ 'rotate-180': isExportOpen }"
             />
           </button>
 
           <div
             v-show="isExportOpen"
-            class="absolute right-0 z-50 mt-2 w-60 rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg ring-1 ring-black/5"
+            class="absolute right-0 z-50 mt-1.5 w-60 rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg ring-1 ring-black/5"
           >
             <button
               v-for="option in exportOptions"
@@ -114,12 +114,12 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
 
         <button
           type="button"
-          class="inline-flex h-9 items-center gap-2 rounded-lg bg-blue-600 px-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-95 cursor-pointer"
+          class="inline-flex h-7.5 items-center gap-1.5 rounded-lg bg-blue-600 px-2.5 text-[11px] font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-95 cursor-pointer"
           @click="emit('add-partner')"
         >
           <UIcon
             name="i-lucide-plus"
-            class="h-4 w-4"
+            class="h-3.5 w-3.5"
           />
           <span>Add Partner</span>
         </button>

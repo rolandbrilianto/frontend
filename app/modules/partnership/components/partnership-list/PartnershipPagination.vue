@@ -56,19 +56,19 @@ const handlePageSize = (event: Event) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-    <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-      <p class="text-xs font-medium text-slate-500">
+  <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+      <p class="text-[11px] font-medium text-slate-500">
         Showing <span class="font-semibold text-slate-700">{{ startItem }}</span> to
         <span class="font-semibold text-slate-700">{{ endItem }}</span> of
         <span class="font-semibold text-slate-700">{{ totalItems }}</span> partners
       </p>
 
-      <div class="flex items-center gap-2">
-        <span class="text-xs font-medium text-slate-500">Rows per page</span>
+      <div class="flex items-center gap-1.5">
+        <span class="text-[11px] font-medium text-slate-500">Rows per page</span>
         <select
           :value="pageSize"
-          class="h-8 rounded-lg border border-slate-200 bg-white px-2 text-xs font-semibold text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
+          class="h-6.5 rounded-md border border-slate-200 bg-white px-1.5 text-[11px] font-semibold text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
           @change="handlePageSize"
         >
           <option
@@ -82,11 +82,11 @@ const handlePageSize = (event: Event) => {
       </div>
     </div>
 
-    <div class="flex flex-wrap items-center gap-4">
+    <div class="flex flex-wrap items-center gap-3">
       <div class="flex items-center gap-1">
         <button
           type="button"
-          class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+          class="inline-flex h-6.5 w-6.5 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
           :disabled="currentPage <= 1"
           aria-label="Previous page"
           @click="goToPage(currentPage - 1)"
@@ -103,14 +103,14 @@ const handlePageSize = (event: Event) => {
         >
           <span
             v-if="item === 'ellipsis'"
-            class="inline-flex h-8 w-8 items-center justify-center text-xs font-medium text-slate-400"
+            class="inline-flex h-6.5 w-6.5 items-center justify-center text-xs font-medium text-slate-400"
           >
             ...
           </span>
           <button
             v-else
             type="button"
-            class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer"
+            class="inline-flex h-6.5 w-6.5 items-center justify-center rounded-md text-xs font-semibold transition-all cursor-pointer"
             :class="
               currentPage === item
                 ? 'bg-blue-600 text-white shadow-xs'
@@ -124,7 +124,7 @@ const handlePageSize = (event: Event) => {
 
         <button
           type="button"
-          class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+          class="inline-flex h-6.5 w-6.5 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
           :disabled="currentPage >= totalPages"
           aria-label="Next page"
           @click="goToPage(currentPage + 1)"
@@ -136,14 +136,14 @@ const handlePageSize = (event: Event) => {
         </button>
       </div>
 
-      <div class="flex items-center gap-2">
-        <span class="text-xs font-medium text-slate-500">Go to</span>
+      <div class="flex items-center gap-1.5">
+        <span class="text-[11px] font-medium text-slate-500">Go to</span>
         <input
           type="number"
           :value="currentPage"
           :min="1"
           :max="totalPages"
-          class="h-8 w-16 rounded-lg border border-slate-200 bg-white px-2 text-xs font-semibold text-slate-700 focus:border-blue-500 focus:outline-none"
+          class="h-6.5 w-14 rounded-md border border-slate-200 bg-white px-1.5 text-[11px] font-semibold text-slate-700 focus:border-blue-500 focus:outline-none"
           @change="handleGoTo"
         >
       </div>

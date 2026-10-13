@@ -97,7 +97,7 @@ const totalResults = computed(() => filteredPartners.value.length)
 </script>
 
 <template>
-  <div class="space-y-3">
+  <div class="space-y-1 lg:-mx-6 lg:-my-6 lg:px-3">
     <PartnershipPageHeader
       @add-partner="handleAddPartner"
       @export="handleExport"
